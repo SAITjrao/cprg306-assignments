@@ -18,15 +18,13 @@ export default function ItemList(){
 
     return(
     <main>
-        <div>
-            <h2>Sort By</h2>
-            <button value="name" onClick={(e) => setSortBy(e.target.value)}>Name</button>
-            <button value="category" onClick={(e) => setSortBy(e.target.value)}>Category</button>
+        <div className="flex flex-row items-center mb-2">
+            <h2 className="pl-3">Sort By: </h2>
+            <button className={`border rounded-sm ml-2 p-2 ${sortBy === "name" ? "bg-blue-500 text-white" : ""}`} value="name" onClick={(e) => setSortBy(e.target.value)}>Name</button>
+            <button  className={`border rounded-sm ml-2 p-2 ${sortBy === "category" ? "bg-blue-500 text-white" : ""}`} value="category" onClick={(e) => setSortBy(e.target.value)}>Category</button>
         </div>
         <ul>
-           {sortedItems.map((item) => (<li key={item.id}><Item name={item.name} quantity={item.quantity} category={item.category}/></li>))} 
+           {sortedItems.map((item) => (<Item key={item.id} name={item.name} quantity={item.quantity} category={item.category}/>))} 
         </ul>
     </main>)  
 }
-
-//array.map(function) return <li key={item.id}></li>
