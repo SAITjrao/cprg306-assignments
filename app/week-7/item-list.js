@@ -1,13 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import data from "./items.json";
 import Item from "./item";
 
-export default function ItemList(){
+export default function ItemList({items}){
     const [sortBy, setSortBy] = useState("name");
 
-    const sortedItems = [...data].sort((a,b) => {
+    const sortedItems = [...items].sort((a,b) => {
         if (sortBy === "name") {
             return a.name < b.name ? -1 : 1
         } else if (sortBy === "category") {
