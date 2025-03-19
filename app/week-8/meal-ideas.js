@@ -8,14 +8,14 @@ async function fetchMealIdeas(ingredient) {
             `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`
         );
     const data = await response.json();
-    return data.meals;
+    return data.meals || [];
     } catch (error) {
         console.error("Error fetching meal ideas: ", error);
         return [];
     }
 }
 
-export default function MealIdeas(ingredient) {
+export default function MealIdeas({ingredient}) {
     const [meals, setMeals] = useState([]);
 
     const loadMealIdeas = async() => {
